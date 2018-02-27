@@ -9,6 +9,9 @@ import {
   StyleSheet
 } from 'react-native';
 
+import TasksHeader from './../components/TasksHeader';
+import Tasks from './../components/Tasks';
+
 export default class TasksScreen extends Component<Props>{
 
   constructor(props){
@@ -27,29 +30,17 @@ export default class TasksScreen extends Component<Props>{
 
   }
 
+
   render(){
     return(
       <View style={styles.container}>
 
-        <View style={styles.headerContainer}>
-          <Image style={styles.userAvatar} source={require('./../images/user-avatar.png')}/>
-          <Text style={styles.pendingTasksText}>6 Pendientes</Text>
-          <Text style={styles.dateText}>SÁBADO 27 DE ENERO 2018</Text>
-        </View>
+        <TasksHeader toBeCompleted={6}/>
 
-        <View style={styles.tasksContainer}>
-
-          <View style={styles.taskContainer}>
-            <Image style={styles.taskIcon} source={require('./../images/icon-circle.png')}/>
-            <Text style={styles.taskText}>Ajustar Estilos</Text>
+          <View style={styles.tasksContainer}>
+            <Tasks tasks = {this.state.tasks}/>
           </View>
 
-          <View style={styles.taskContainer}>
-            <Image style={styles.taskIcon} source={require('./../images/icon-circle.png')}/>
-            <Text style={styles.taskText}>Ajustar Estilos</Text>
-          </View>
-
-        </View>
       </View>
     )
   }
@@ -59,48 +50,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  headerContainer: {
-    backgroundColor: 'blue',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  userAvatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 65
-  },
-  pendingTasksText: {
-    fontSize: 36,
-    color: 'white',
-    marginTop: 25
-  },
-  dateText: {
-    fontSize: 16,
-    color: '#A0A0A0',
-    marginTop: 8
-  },
   tasksContainer: {
     backgroundColor: 'green',
     flex: 1
-  },
-  taskContainer: {
-    flex: 1,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    borderStyle: 'solid',
-    borderBottomWidth: 2,
-    borderColor: '#E7E7E7'
-
-  },
-  taskIcon: {
-    width: 25,
-    height: 25,
-    marginRight: 15
-  },
-  taskText: {
-    fontSize: 21,
   }
 });

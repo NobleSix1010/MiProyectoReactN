@@ -3,7 +3,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'; //Siempre se importan
 
 import {
   View,
