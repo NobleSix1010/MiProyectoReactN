@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  ImageBackground,
   StyleSheet
 } from 'react-native';
 
@@ -29,11 +30,11 @@ export default class TasksHeader extends Component<Props>{
 
   render(){
     return(
-      <View style={styles.container}>
+      <ImageBackground source={require('./../images/tasks-bg.jpg')} style={styles.container}>
         <Image style={styles.userAvatar} source={require('./../images/user-avatar.png')}/>
         <Text style={styles.pendingTasksText}>{this.props.toBeCompleted} Pendientes</Text>
         <Text style={styles.dateText}>{this.props.generateDate}</Text>
-      </View>
+      </ImageBackground>
     );
   }
 
@@ -43,7 +44,6 @@ export default class TasksHeader extends Component<Props>{
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'blue',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'

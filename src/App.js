@@ -7,9 +7,9 @@ import {
 import { StackNavigator } from 'react-navigation';
 import IntroScreen from './screens/IntroScreen';
 import TasksScreen from './screens/TasksScreen';
+import AddTaskModal from './modals/AddTaskModal';
 
-//Or Export this...
-const ScreenStack = StackNavigator(
+export default App = StackNavigator(
   {
     Home: { screen: IntroScreen },
     Tasks: { screen: TasksScreen }
@@ -18,11 +18,12 @@ const ScreenStack = StackNavigator(
     headerMode: 'none'
   }
 );
-//TODO: Delete Header... headerMode: 'none'
 
 
+/*
 export default class App extends Component<Props> {
   render(){
     return <ScreenStack />;
   }
 }
+*/

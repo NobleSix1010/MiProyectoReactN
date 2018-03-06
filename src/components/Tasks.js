@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-  TouchableOpacity,
   View,
   Text,
   Image,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 
 
@@ -16,19 +16,20 @@ export default class Tasks extends Component<Props>{
   }
 
   render(){
-    return(
-      this.props.tasks.map( (task)=>{
-        return(
-          <TouchableOpacity key={task.id} style={styles.taskContainer}>
-            <Image style={styles.taskIcon} source={require('./../images/icon-circle.png')}/>
-            <Text style={styles.taskText}>{task.title}</Text>
-          </TouchableOpacity>
-        )
-      })
-    )
+      const {title,completed,id}=this.props.task;
+      const icon = completed ? require('./../images/icon-checked.png') : require('./../images/icon-circle.png');
+
+      return(
+        <TouchableHighlight onPress={ ()=>{ this.props.updateTask(id)}} style={styles.container}>
+          <View style={styles.taskContainer}>
+              <Image style={styles.taskIcon} source={icon}/>
+              <Text style={completed ? styles.taskTextCompleted : styles.taskText}>{title}</Text>
+          </View>
+        </TouchableHighlight>
+      )
+    }
   }
 
-}
 
 
 const styles = StyleSheet.create({
@@ -49,5 +50,12 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderBottomWidth: 2,
     borderColor: '#E7E7E7'
+  },
+  container:{
+    height:60
+  },
+  taskTextCompleted:{
+    fontSize:21,
+    color: '#A4A4A4'
   }
 });
